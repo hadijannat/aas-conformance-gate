@@ -2,7 +2,7 @@ import * as crypto from 'crypto';
 import * as path from 'path';
 
 const MAX_FILENAME_LENGTH = 200;
-const UNSAFE_CHARS = /[\/\\:*?"<>|\s]/g;
+const UNSAFE_CHARS = /[/\\:*?"<>|\s]/g;
 
 /**
  * Sanitize a file path for use as a report filename
@@ -29,7 +29,7 @@ export function sanitizeFilename(
     const dirParts = dir.split(path.sep).filter(p => p && p !== '.');
 
     // Create a deterministic path representation
-    let parts = dirParts.length > 0 ? [...dirParts, name] : [name];
+    const parts = dirParts.length > 0 ? [...dirParts, name] : [name];
     let sanitized = parts
         .join('_')
         .replace(UNSAFE_CHARS, '_')

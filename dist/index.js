@@ -33665,7 +33665,7 @@ exports.getServerReportPath = getServerReportPath;
 const crypto = __importStar(__nccwpck_require__(6982));
 const path = __importStar(__nccwpck_require__(6928));
 const MAX_FILENAME_LENGTH = 200;
-const UNSAFE_CHARS = /[\/\\:*?"<>|\s]/g;
+const UNSAFE_CHARS = /[/\\:*?"<>|\s]/g;
 /**
  * Sanitize a file path for use as a report filename
  * Replaces unsafe characters and truncates if necessary
@@ -33685,7 +33685,7 @@ function sanitizeFilename(filePath, maxLength = MAX_FILENAME_LENGTH) {
     const dir = path.dirname(filePath);
     const dirParts = dir.split(path.sep).filter(p => p && p !== '.');
     // Create a deterministic path representation
-    let parts = dirParts.length > 0 ? [...dirParts, name] : [name];
+    const parts = dirParts.length > 0 ? [...dirParts, name] : [name];
     let sanitized = parts
         .join('_')
         .replace(UNSAFE_CHARS, '_')
