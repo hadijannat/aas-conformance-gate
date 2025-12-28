@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output (committed for action distribution)
+# dist/
+
+# Test coverage
+coverage/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test artifacts
+test_samples/
+test-reports/
+aas-conformance-report/

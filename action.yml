@@ -1,0 +1,90 @@
+name: "AAS Conformance Gate"
+description: "CI gate for AASX/JSON/XML files and AAS HTTP API servers using IDTA AAS Test Engines"
+author: "Your Name"
+
+branding:
+  icon: "check-circle"
+  color: "green"
+
+inputs:
+  mode:
+    description: "Validation mode: file | server | both"
+    required: false
+    default: "file"
+
+  files:
+    description: "Newline-separated list of file paths and/or glob patterns (for file mode)"
+    required: false
+    default: ""
+
+  format:
+    description: "Optional format override: json | xml | aasx (otherwise inferred from extension)"
+    required: false
+    default: ""
+
+  modelType:
+    description: "Optional: passed to aas_test_engines check_file --model_type (e.g., Submodel)"
+    required: false
+    default: ""
+
+  serverUrl:
+    description: "Base URL of the AAS HTTP API server (for server mode)"
+    required: false
+    default: ""
+
+  apiProfile:
+    description: "IDTA profile identifier for server conformance (required for server mode)"
+    required: false
+    default: ""
+
+  filter:
+    description: "Optional glob filter for server operations (passed to --filter)"
+    required: false
+    default: ""
+
+  headers:
+    description: "Optional newline-separated headers for server tests (each forwarded via --header)"
+    required: false
+    default: ""
+
+  reportFormats:
+    description: "Comma-separated list of report formats: json,html"
+    required: false
+    default: "json,html"
+
+  outputDir:
+    description: "Directory for generated reports"
+    required: false
+    default: "aas-conformance-report"
+
+  pipPackage:
+    description: "pip package name"
+    required: false
+    default: "aas_test_engines"
+
+  pipVersion:
+    description: "pip version specifier (e.g., 1.2.3). Use 'latest' for newest."
+    required: false
+    default: "latest"
+
+  pythonCmd:
+    description: "Python executable (python or python3). Leave empty for auto-detect."
+    required: false
+    default: ""
+
+  continueOnError:
+    description: "If true, do not fail the job, only report"
+    required: false
+    default: "false"
+
+outputs:
+  passed:
+    description: "true if all checks passed"
+  reportDir:
+    description: "Path to report directory"
+  failedChecks:
+    description: "JSON array of failed check identifiers"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
