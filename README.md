@@ -1,6 +1,6 @@
 # AAS Conformance Gate
 
-[![CI](https://github.com/YOUR_ORG/aas-conformance-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_ORG/aas-conformance-gate/actions/workflows/ci.yml)
+[![CI](https://github.com/hadijannat/aas-conformance-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/hadijannat/aas-conformance-gate/actions/workflows/ci.yml)
 
 A GitHub Action that turns [IDTA AAS Test Engines](https://github.com/admin-shell-io/aas-test-engines) into a CI quality gate for:
 
